@@ -14,7 +14,8 @@ console.log('workign');
 function handleAdd() {
   $('#js-add').submit(function(event) {
     event.preventDefault();
-    console.log($(event.target).serializeJson());
+    const newItemData = ($(event.target).serializeJson());
+    console.log(newItemData);
   });
 }
 
