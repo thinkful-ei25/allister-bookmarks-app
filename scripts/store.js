@@ -12,14 +12,19 @@ const store = (function() {
 
   const setFocus = function(id) {
     this.focus = id;
-  }
+  };
+
+  const findAndDelete = function(id) {
+    this.items = this.items.filter(item => item.id !== id);
+  };
 
   return {
     items: [],
     addItem,
     focus: null,
     findById,
-    setFocus
+    setFocus,
+    findAndDelete
   };
 
 }());

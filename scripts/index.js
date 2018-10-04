@@ -1,7 +1,7 @@
 'use strict';
 
 $.fn.extend({
-  serializeJson: function() {
+  serializeJson: function () {
     const formData = new FormData(this[0]);
     const o = {};
     formData.forEach((val, name) => o[name] = val);
@@ -16,13 +16,13 @@ function generateItemElement(item) {
 
   if (item.id === store.focus) {
     return `
-    <li class="js-item-element" data-item-id="${item.id}">${item.title}: ${item.rating}, ${item.desc}, <a href="${item.url}">Visit</a>, 
+    <li class="js-item-element" data-item-id="${item.id}">${item.title}: ${item.rating}, ${item.desc}, <a href="${item.url}">Visit</a>, <button class="js-delete">delete</button> 
     </li>`;
   }
   return `
   <li class="js-item-element" data-item-id="${item.id}">${item.title}: ${item.rating}
   </li>`;
-     
+
 
 }
 
@@ -48,10 +48,11 @@ function getItemIdFromElement(item) {
     .closest('.js-item-element')
     .data('item-id');
 }
- 
+
 
 function handleFocus() {
-  $('.js-bookmarks').on('click', '.js-item-element', function(event) {
+  $('.js-bookmarks').on('click', '.js-item-element', function (event) {
+    
     console.log(event.target);
     const id = getItemIdFromElement(event.target);
     console.log(id);
@@ -62,15 +63,31 @@ function handleFocus() {
 }
 
 
+function handleDelete() {
+
+  $('.js-bookmarks').on('click', '.js-delete', function (event) {
+    const id = getItemIdFromElement(event.target);
+    console.log(id);
+    api.deleteItem(id, error => {
+      console.log(error.responseJSON.message);
+    }, function() {
+      store.findAndDelete(id);
+      console.log(store.items);
+      
+      render();
+    });
+  });
+}
+
 
 function handleAdd() {
-  $('#js-add').submit(function(event) {
+  $('#js-add').submit(function (event) {
     event.preventDefault();
     const newItemData = ($(event.target).serializeJson());
     console.log(newItemData);
-    api.createItem(newItemData, error =>{
+    api.createItem(newItemData, error => {
       console.log(error.responseJSON.message);
-    }, (data) => { 
+    }, (data) => {
       console.log(data);
       store.addItem(data);
       console.log(store.items)
@@ -79,17 +96,20 @@ function handleAdd() {
   });
 }
 
-$(handleAdd);
 
 
-$(document).ready(function() {
-  
+
+
+$(document).ready(function () {
+
   api.getItems((items) => {
     console.log('items:', items);
     items.forEach((item) => store.addItem(item));
     console.log(store.items);
     render();
     handleFocus();
+    handleDelete();
+    handleAdd();
     // const item = store.items[0];
     // console.log('current name: ' + item.name);
     // store.findAndUpdate(item.id, { name: 'foobared' });

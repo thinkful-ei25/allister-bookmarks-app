@@ -1,10 +1,10 @@
 'use strict';
 
-const api = (function() {
-  
-  const BASE_URL =  'https://thinkful-list-api.herokuapp.com/allister';
+const api = (function () {
 
-  const createItem = function(itemData, ifError, callback) {
+  const BASE_URL = 'https://thinkful-list-api.herokuapp.com/allister';
+
+  const createItem = function (itemData, ifError, callback) {
     $.ajax({
       url: `${BASE_URL}/bookmarks`,
       method: 'POST',
@@ -15,14 +15,28 @@ const api = (function() {
     });
   };
 
-const getItems = function(callback) {
+  const getItems = function (callback) {
 
     $.getJSON(`${BASE_URL}/bookmarks`, callback);
   };
 
+
+  const deleteItem = function (id, ifError, callback) {
+    console.log(id);
+    $.ajax({
+      url: `${BASE_URL}/bookmarks/${id}`,
+      method: 'DELETE',
+      contentType: 'application/JSON',
+      success: callback,
+      error: ifError
+
+    });
+  };
+
   return {
     createItem,
-    getItems
+    getItems,
+    deleteItem
   };
 
 
