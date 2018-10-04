@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel ="stylesheet" href="styles/style.css" type="text/css">
+  <title>Allister - Bookmarks</title>
+</head>
+
+<body>
+  <header>
+    <h1>My Bookmarks</h1>
+  </header>
+  <main>
+    <a href="#add-form">
+      <button type="button">Add</button>
+    </a>
+    <select>
+      <option value="filter-off">Off</option>
+      <option value="filter-1">1 Star</option>
+      <option value="filter-2">2 Stars</option>
+      <option value="filter-3">3 Stars</option>
+      <option value="filter-4">4 Stars</option>
+      <option value="filter-5">5 Stars</option>
+    </select>
+    
+    <section class="list-container">
+      <ul class="bookmarks">
+      </ul>
+    </section>
+
+    <section class="add-form">
+      <form id="add">
+        <label for="bookmark-title">Title:</label>
+        <input type="text" name="title" id="bookmark-title">
+        <label for="bookmark-link">Address:</label>
+        <input type="url" name="address" id="bookmark-address">
+        <label for="bookmark-description">Description:</label>
+        <textarea placeholder="Description"></textarea>
+        <label for="rating-1">1 star</label>
+        <input type="radio" name="rating" id="rating-1">
+        <label for="rating-2">2 stars</label>
+        <input type="radio" name="rating" id="rating-2">
+        <label for="rating-3">3 stars</label>
+        <input type="radio" name="rating" id="rating-3">
+        <label for="rating-4">4 stars</label>
+        <input type="radio" name="rating" id="rating-4">
+        <label for="rating-5">5 stars</label>
+        <input type="radio" name="rating" id="rating-5">
+        <input type="submit">
+
+
+      </form>
+    </section>
+  </main>
+
+
+</body>
+
+</html>
