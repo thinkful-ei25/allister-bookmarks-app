@@ -14,9 +14,16 @@ const api = (function() {
       error: ifError
     });
   };
+
+const getItems = function(callback) {
+
+    $.getJSON(`${BASE_URL}/bookmarks`, callback);
+  };
+
   return {
-    createItem
-  }
+    createItem,
+    getItems
+  };
 
 
 }());
