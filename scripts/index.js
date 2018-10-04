@@ -16,8 +16,9 @@ function handleAdd() {
     event.preventDefault();
     const newItemData = ($(event.target).serializeJson());
     console.log(newItemData);
-    api.createItem(newItemData, console.log('error'), console.log('posted'));
-  });
+    api.createItem(newItemData, error =>{
+      console.log(error.responseJSON.message);
+    }, () => { console.log('posted')})});
 }
 
 $(handleAdd);
