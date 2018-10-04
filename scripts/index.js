@@ -43,7 +43,23 @@ function render() {
 
 }
 
+function getItemIdFromElement(item) {
+  return $(item)
+    .closest('.js-item-element')
+    .data('item-id');
+}
  
+
+function handleFocus() {
+  $('.js-bookmarks').on('click', '.js-item-element', function(event) {
+    console.log(event.target);
+    const id = getItemIdFromElement(event.target);
+    console.log(id);
+    store.setFocus(id);
+    console.log(store.focus);
+    render();
+  });
+}
 
 
 
@@ -65,6 +81,7 @@ function handleAdd() {
 
 $(handleAdd);
 
+
 $(document).ready(function() {
   
   api.getItems((items) => {
@@ -72,7 +89,7 @@ $(document).ready(function() {
     items.forEach((item) => store.addItem(item));
     console.log(store.items);
     render();
-
+    handleFocus();
     // const item = store.items[0];
     // console.log('current name: ' + item.name);
     // store.findAndUpdate(item.id, { name: 'foobared' });

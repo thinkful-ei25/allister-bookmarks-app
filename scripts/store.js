@@ -10,11 +10,16 @@ const store = (function() {
     return this.items.find(item => item.id === id);
   };
 
+  const setFocus = function(id) {
+    this.focus = id;
+  }
+
   return {
     items: [],
     addItem,
     focus: null,
-    findById
+    findById,
+    setFocus
   };
 
 }());
