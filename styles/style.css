@@ -16,7 +16,7 @@ form * {
   max-width: 900px;
 }
 
-.filter-add {
+.filter-add, .js-filter {
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -32,8 +32,9 @@ form * {
 
 .js-item-element {
   display: block;
-  color: grey;
+  color: white;
   font-style: italic;
+  background-color: black
   
   
 }
@@ -54,6 +55,7 @@ input[type=text], input[type=url], textarea {
 main {
   width: 95%;
   margin: 0 auto;
+  background-color: lightblue;
 }
 h1 {
   width: 95%;

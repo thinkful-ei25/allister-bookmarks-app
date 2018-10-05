@@ -15,8 +15,10 @@
     <h1>My Bookmarks</h1>
   </header>
   <main>
+    
     <section class="filter-add">
-      <select class="js-filter">
+      <label for="rating-filter">Minimum Rating</label>
+      <select class="js-filter" id="rating-filter">
        <option value=0>Off</option>
         <option value="1">1 Star</option>
         <option value="2">2 Stars</option>
@@ -35,10 +37,10 @@
       <form id="js-add">
         <label for="bookmark-title">Title:</label>
         <input type="text" name="title" id="bookmark-title">
-        <label for="bookmark-link">Address:</label>
+        <label for="bookmark-url">Address:</label>
         <input type="url" name="url" id="bookmark-url">
         <label for="bookmark-description">Description:</label>
-        <textarea form="js-add" name="desc" placeholder="Description"></textarea>
+        <textarea form="js-add" name="desc" placeholder="Description" id="bookmark-description"></textarea>
         <label for="rating-1">1 star</label>
         <input type="radio" name="rating" value="1" id="rating-1">
         <label for="rating-2">2 stars</label>
