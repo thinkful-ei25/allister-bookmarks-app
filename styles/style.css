@@ -25,16 +25,19 @@ form * {
   margin-bottom: 20px;
   border: 1px solid grey;
   padding: 5px;
-  
+  border-radius: 10px;
+  max-width: 640px;
+  margin-right: 5px;
+
   
   
 }
 
 .js-item-element {
   display: block;
-  color: white;
+
   font-style: italic;
-  background-color: black
+  background-color: lightgoldenrodyellow;
   
   
 }
@@ -63,6 +66,16 @@ h1 {
   max-width: 900px;
 }
 
+.js-delete {
+  margin-left: 10px;
+}
 
+.hidden {
+  display: none;
+}
+
+.hide-add {
+  margin-bottom: 5px;
+}
 
 

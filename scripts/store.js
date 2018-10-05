@@ -20,11 +20,15 @@ const store = (function() {
 
   const setError = function(error) {
     this.error = error;
-  }
+  };
 
   const setFilter = function(filter) {
     this.filter = filter;
-  }
+  };
+
+  const setHideAdd = function() {
+    this.hideAdd = !this.hideAdd;
+  };
 
   
 
@@ -38,7 +42,9 @@ const store = (function() {
     error: null,
     setError,
     filter: 0,
-    setFilter
+    setFilter,
+    hideAdd: true,
+    setHideAdd
   };
 
 }());

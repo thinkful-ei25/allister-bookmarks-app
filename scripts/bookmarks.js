@@ -18,12 +18,12 @@ const bookmarks = (function () {
 
     if (item.id === store.focus) {
       return `
-    <li tabindex="0" class="js-item-element" data-item-id="${item.id}">${item.title}: ${'*'.repeat(item.rating)}
-    <p class="desc"> ${item.desc} </p> <a href="${item.url}">Visit</a> <button class="js-delete">delete</button> 
+    <li tabindex="0" class="js-item-element" data-item-id="${item.id}"><span class="title-rating">${item.title}: ${'✪'.repeat(item.rating)}</span>
+    <p class="desc"> ${item.desc} </p> <a class="url" href="${item.url}">Visit</a> <button class="js-delete">delete</button> 
     </li>`;
     }
     return `
-  <li tabindex="0" class="js-item-element" data-item-id="${item.id}">${item.title}: ${'*'.repeat(item.rating)}
+  <li tabindex="0" class="js-item-element" data-item-id="${item.id}">${item.title}: ${'✪'.repeat(item.rating)}
   </li>`;
 
 
@@ -40,7 +40,18 @@ const bookmarks = (function () {
 
     if (store.error) {
       $('.error').html(`<p class="error">${store.error}<p>`);
+    } else {
+      $('.error').html('<p class="error"><p>');
     }
+
+    if (!store.hideAdd) {
+      $('#js-add').toggleClass('hidden', false);
+      $('.hide-add').text('Hide');
+    } else {
+      $('#js-add').toggleClass('hidden', true);
+      $('.hide-add').text('Add a Bookmark');
+    }
+
     let items = store.items.slice();
 
     if (store.filter) {
@@ -50,6 +61,14 @@ const bookmarks = (function () {
     $('.js-bookmarks').html(bookmarkItemsString);
 
 
+  }
+
+  function handleHideAdd() {
+    $('.hide-add').on('click', function(event) {
+      store.setHideAdd();
+      console.log(store.hideAdd);
+      render();
+    });
   }
 
 
@@ -130,6 +149,8 @@ const bookmarks = (function () {
         console.log(store.items);
         $(this).closest('form').find('input[type=text], input[type=url], textarea').val('');
         $(this).closest('form').find('input[name=rating]').prop('checked', false);
+        store.setError(0);
+        console.log(store.error);
         render();
       });
     });
@@ -140,6 +161,7 @@ const bookmarks = (function () {
     handleDelete();
     handleAdd();
     handleFilter();
+    handleHideAdd();
 
   }
 
