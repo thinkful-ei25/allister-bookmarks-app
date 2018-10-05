@@ -16,7 +16,8 @@ function generateItemElement(item) {
 
   if (item.id === store.focus) {
     return `
-    <li tabindex="0" class="js-item-element" data-item-id="${item.id}">${item.title}: ${'*'.repeat(item.rating)}, ${item.desc}, <a href="${item.url}">Visit</a>, <button class="js-delete">delete</button> 
+    <li tabindex="0" class="js-item-element" data-item-id="${item.id}">${item.title}: ${'*'.repeat(item.rating)}
+    <p class="desc"> ${item.desc} </p> <a href="${item.url}">Visit</a> <button class="js-delete">delete</button> 
     </li>`;
   }
   return `
@@ -113,6 +114,7 @@ function handleAdd() {
   $('#js-add').submit(function (event) {
     event.preventDefault();
     const newItemData = ($(event.target).serializeJson());
+
     console.log(newItemData);
     api.createItem(newItemData, error => {
       console.log(error.responseJSON.message);
@@ -123,6 +125,8 @@ function handleAdd() {
       console.log(data);
       store.addItem(data);
       console.log(store.items);
+      $(this).closest('form').find('input[type=text], input[type=url], textarea').val('');
+      $(this).closest('form').find('input[name=rating]').prop('checked', false);
       render();
     });
   });
