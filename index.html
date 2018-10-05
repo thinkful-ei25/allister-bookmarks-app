@@ -16,18 +16,15 @@
   </header>
   <main>
     <section class="filter-add">
-    <a href="#add-form">
-      <button type="button">Add</button>
-    </a>
-    <select>
-      <option value="filter-off">Off</option>
-      <option value="filter-1">1 Star</option>
-      <option value="filter-2">2 Stars</option>
-      <option value="filter-3">3 Stars</option>
-      <option value="filter-4">4 Stars</option>
-      <option value="filter-5">5 Stars</option>
-    </select>
-  </section>
+      <select class="js-filter">
+       <option value=0>Off</option>
+        <option value="1">1 Star</option>
+        <option value="2">2 Stars</option>
+        <option value="3">3 Stars</option>
+        <option value="4">4 Stars</option>
+       <option value="5">5 Stars</option>
+      </select>
+    </section>
     
     <section class="list-container">
       <ul class="bookmarks js-bookmarks">
@@ -52,7 +49,8 @@
         <input type="radio" name="rating" value="4" id="rating-4">
         <label for="rating-5">5 stars</label>
         <input type="radio" name="rating" value="5" id="rating-5">
-        <button type="submit">Add Item</button>
+        <button class="add-item" type="submit">Add Item</button>
+        <p class="error"></p>
 
 
       </form>

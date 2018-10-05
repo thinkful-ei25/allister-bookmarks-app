@@ -18,13 +18,27 @@ const store = (function() {
     this.items = this.items.filter(item => item.id !== id);
   };
 
+  const setError = function(error) {
+    this.error = error;
+  }
+
+  const setFilter = function(filter) {
+    this.filter = filter;
+  }
+
+  
+
   return {
     items: [],
     addItem,
     focus: null,
     findById,
     setFocus,
-    findAndDelete
+    findAndDelete,
+    error: null,
+    setError,
+    filter: 0,
+    setFilter
   };
 
 }());

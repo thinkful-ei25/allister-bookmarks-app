@@ -32,3 +32,11 @@ form * {
   margin-bottom: 15px;
   width: 20%;
 }
+
+.add-item {
+  margin-top: 10px;
+}
+
+.error {
+  color:red;
+}
