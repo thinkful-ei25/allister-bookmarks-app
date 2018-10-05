@@ -16,11 +16,11 @@ function generateItemElement(item) {
 
   if (item.id === store.focus) {
     return `
-    <li class="js-item-element" data-item-id="${item.id}">${item.title}: ${'*'.repeat(item.rating)}, ${item.desc}, <a href="${item.url}">Visit</a>, <button class="js-delete">delete</button> 
+    <li tabindex="0" class="js-item-element" data-item-id="${item.id}">${item.title}: ${'*'.repeat(item.rating)}, ${item.desc}, <a href="${item.url}">Visit</a>, <button class="js-delete">delete</button> 
     </li>`;
   }
   return `
-  <li class="js-item-element" data-item-id="${item.id}">${item.title}: ${'*'.repeat(item.rating)}
+  <li tabindex="0" class="js-item-element" data-item-id="${item.id}">${item.title}: ${'*'.repeat(item.rating)}
   </li>`;
 
 
@@ -46,7 +46,10 @@ function render() {
   const bookmarkItemsString = generateBookmarkString(items);
   $('.js-bookmarks').html(bookmarkItemsString);
 
+
 }
+
+
 
 function getItemIdFromElement(item) {
   return $(item)
@@ -70,9 +73,9 @@ function handleFilter() {
 
 
 function handleFocus() {
-  $('.js-bookmarks').on('click', '.js-item-element', function (event) {
-
-    console.log(event.target);
+  $('.js-bookmarks').on('click keypress', '.js-item-element', function (event) {
+    if (event.which === 13 || event.which === 32 || event.type === 'click') {
+    console.log(event);
     const id = getItemIdFromElement(event.target);
     console.log(id);
     if (store.focus === id) {
@@ -83,13 +86,14 @@ function handleFocus() {
     console.log(store.focus);
     render();
 
-  });
+  }});
 }
 
 
 function handleDelete() {
 
-  $('.js-bookmarks').on('click', '.js-delete', function (event) {
+  $('.js-bookmarks').on('click keypress', '.js-delete', function (event) {
+    if (event.which === 13 || event.which === 32 || event.type === 'click') {
     const id = getItemIdFromElement(event.target);
     console.log(id);
     api.deleteItem(id, error => {
@@ -100,6 +104,7 @@ function handleDelete() {
 
       render();
     });
+  }
   });
 }
 
