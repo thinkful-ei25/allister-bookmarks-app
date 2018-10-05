@@ -20,9 +20,8 @@ const api = (function () {
     $.getJSON(`${BASE_URL}/bookmarks`, callback);
   };
 
-
   const deleteItem = function (id, ifError, callback) {
-    console.log(id);
+    //console.log(id);
     $.ajax({
       url: `${BASE_URL}/bookmarks/${id}`,
       method: 'DELETE',

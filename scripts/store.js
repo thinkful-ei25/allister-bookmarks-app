@@ -29,9 +29,7 @@ const store = (function() {
   const setHideAdd = function() {
     this.hideAdd = !this.hideAdd;
   };
-
   
-
   return {
     items: [],
     addItem,
@@ -44,7 +42,9 @@ const store = (function() {
     filter: 0,
     setFilter,
     hideAdd: true,
-    setHideAdd
+    setHideAdd,
+    
+    
   };
 
 }());

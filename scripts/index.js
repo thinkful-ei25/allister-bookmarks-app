@@ -4,9 +4,9 @@ $(document).ready(function () {
   bookmarks.bindEventListeners();
   bookmarks.render();
   api.getItems((items) => {
-    console.log('items:', items);
+    //console.log('items:', items);
     items.forEach((item) => store.addItem(item));
-    console.log(store.items);
+    //console.log(store.items);
     bookmarks.render();
     
     // const item = store.items[0];
