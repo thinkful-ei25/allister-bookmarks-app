@@ -20,14 +20,14 @@ const bookmarks = (function () {
 
     if (item.id === store.focus) {
       return `
-    <li tabindex="0" class="js-item-element" data-item-id="${item.id}"><span class="title-rating">${item.title}:   ${'✪'.repeat(item.rating)} (${item.rating})</span>
+    <li tabindex="0" class="js-item-element" data-item-id="${item.id}"><p class="title-rating">${item.title}:   ${'✪'.repeat(item.rating)} (${item.rating})</p>
     <p class="desc"> ${item.desc} </p> <a class="url" href="${item.url}">Visit</a> <button class="js-delete">delete</button> 
     </li>`;
     }
 
 
     return `
-  <li tabindex="0" class="js-item-element" data-item-id="${item.id}">${item.title}:   ${'✪'.repeat(item.rating)} (${item.rating})
+  <li tabindex="0" class="js-item-element" data-item-id="${item.id}"><p>${item.title}:   ${'✪'.repeat(item.rating)} (${item.rating})</p>
   </li>`;
 
 

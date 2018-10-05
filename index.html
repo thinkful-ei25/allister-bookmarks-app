@@ -18,7 +18,7 @@
   <main role="main">
     
     <section role="region" class="filter-add">
-      <label for="rating-filter">Minimum Rating</label>
+      <label class="min-rating"for="rating-filter">Minimum Rating</label>
       <select class="js-filter" id="rating-filter">
        <option value=0>Off</option>
         <option value="1">1 Star</option>
@@ -43,6 +43,7 @@
         <input type="url" name="url" id="bookmark-url">
         <label for="bookmark-description">Description:</label>
         <textarea form="js-add" name="desc" placeholder="Description" id="bookmark-description"></textarea>
+        <p> Rating:</p>
         <label for="rating-1">1 star</label>
         <input type="radio" name="rating" value="1" id="rating-1">
         <label for="rating-2">2 stars</label>
